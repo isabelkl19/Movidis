@@ -14,7 +14,8 @@ void setup() {
 }
 void loop() {
   while (HC12.available()) {        // If HC-12 has data
-    int val = HC12.read();
+    float val = HC12.read();
     Serial.println(HC12.read());      // Send the data to Serial monitor
+    delay(3000);
   }
 }
