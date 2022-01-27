@@ -7,6 +7,7 @@
 */
 #include <SoftwareSerial.h>
 SoftwareSerial HC12(3, 4); // HC-12 TX Pin, HC-12 RX Pin
+int count = 0;
 
 void setup() {
   Serial.begin(9600);             // Serial port to computer
@@ -14,8 +15,12 @@ void setup() {
 }
 void loop() {
   while (HC12.available()) {        // If HC-12 has data
-    float val = HC12.read();
-    Serial.println(HC12.read());      // Send the data to Serial monitor
-    delay(3000);
+    int val = HC12.read();
+    Serial.print(val);      // Send the data to Serial monitor
+    if (val == 19) {
+      count++;
+    }
   }
+  Serial.println(count);
+  delay(1000);
 }
